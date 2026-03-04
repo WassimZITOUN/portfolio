@@ -1,14 +1,16 @@
 import { cn } from '@/lib/utils'
 import React from 'react'
+import { GlowingEffect } from '@/components/ui/glowing-effect'
 
 function GlassCard({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) {
     return (
         <div
             className={cn(
-                'rounded-2xl border bg-white/5 border-white/10 hover:bg-white/10 transition-colors duration-300 p-6',
+                'relative rounded-2xl border bg-white/5 border-white/10 hover:bg-white/10 transition-colors duration-300 p-6',
                 className,
             )}
             {...props}>
+            <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} inactiveZone={0.01} />
             {children}
         </div>
     )
