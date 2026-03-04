@@ -5,6 +5,9 @@ import {
     GlassCardDescription,
     GlassCardContent,
 } from '@/components/ui/glass-card'
+import Image from 'next/image'
+import pcMockup from '@/app/assets/PCmockup.png'
+import mobileMockup from '@/app/assets/MobileMockup.png'
 
 function Tag({ children }: { children: React.ReactNode }) {
     return (
@@ -22,28 +25,55 @@ export function ProjectsSection() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[350px]">
 
                 {/* Row 1 — Col 1: Kiseki (flagship, 2 columns) */}
-                <GlassCard className="md:col-span-2 flex flex-col justify-between">
-                    <GlassCardHeader>
-                        <div className="flex items-center gap-2 mb-1">
-                            <span className="text-2xl">✦</span>
-                            <GlassCardTitle className="text-2xl">Kiseki — App Sociale</GlassCardTitle>
-                        </div>
-                        <GlassCardDescription>
-                            Application sociale de vote quotidien entre amis. Architecture monorepo complexe avec logique métier partagée.
-                        </GlassCardDescription>
-                    </GlassCardHeader>
+                <GlassCard className="md:col-span-2">
+                    <div className="flex h-full flex-col gap-6 md:flex-row md:items-center">
+                        <div className="flex flex-1 flex-col justify-between gap-4">
+                            <GlassCardHeader>
+                                <div className="flex items-center gap-2 mb-1">
+                                    <span className="text-2xl">✦</span>
+                                    <GlassCardTitle className="text-2xl">Kiseki — App Sociale</GlassCardTitle>
+                                </div>
+                                <GlassCardDescription>
+                                    Application sociale de vote quotidien entre amis. Architecture monorepo complexe avec logique métier partagée.
+                                </GlassCardDescription>
+                            </GlassCardHeader>
 
-                    <GlassCardContent className="flex flex-col gap-4">
-                        <p className="text-white/50 text-xs leading-relaxed">
-                            Mise en place de Edge Functions, CRON jobs et Row Level Security (RLS).
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                            <Tag>Next.js</Tag>
-                            <Tag>Expo</Tag>
-                            <Tag>Supabase</Tag>
-                            <Tag>TypeScript</Tag>
+                            <GlassCardContent className="flex flex-col gap-4 pt-2">
+                                <p className="text-white/50 text-xs leading-relaxed">
+                                    Mise en place de Edge Functions, CRON jobs et Row Level Security (RLS).
+                                </p>
+                                <div className="flex flex-wrap gap-2">
+                                    <Tag>Next.js</Tag>
+                                    <Tag>Expo</Tag>
+                                    <Tag>Supabase</Tag>
+                                    <Tag>TypeScript</Tag>
+                                </div>
+                            </GlassCardContent>
                         </div>
-                    </GlassCardContent>
+
+                        <div className="relative mx-auto h-[220px] w-full max-w-[360px] md:h-full md:flex-1 md:max-w-none">
+                            {/* Subtle glow behind mockups */}
+                            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[60%] rounded-full bg-purple-500/15 blur-3xl" />
+
+                            {/* PC mockup — perspective tilt */}
+                            <div className="absolute left-[5%] top-[10%] w-[80%] [perspective:800px]">
+                                <Image
+                                    src={pcMockup}
+                                    alt="Aperçu desktop de l'application Kiseki"
+                                    className="h-auto w-full rounded-lg object-contain [transform:rotateY(-4deg)_rotateX(2deg)] drop-shadow-[0_20px_40px_rgba(139,92,246,0.25)]"
+                                />
+                            </div>
+
+                            {/* Mobile mockup — overlapping in front */}
+                            <div className="absolute bottom-0 right-[5%] w-[30%] min-w-[80px] md:min-w-[100px] [perspective:800px]">
+                                <Image
+                                    src={mobileMockup}
+                                    alt="Aperçu mobile de l'application Kiseki"
+                                    className="h-auto w-full rounded-xl object-contain [transform:rotateY(6deg)_rotateX(1deg)] drop-shadow-[0_20px_40px_rgba(139,92,246,0.3)]"
+                                />
+                            </div>
+                        </div>
+                    </div>
                 </GlassCard>
 
                 {/* Row 1 — Col 2: GestionRDV (1 column) */}

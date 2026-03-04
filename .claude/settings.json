@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx next build)",
+      "Bash(npm install three @types/three)",
+      "WebFetch(domain:tailark.com)",
+      "WebFetch(domain:ibelick.com)",
+      "WebFetch(domain:www.ibelick.com)"
+    ],
+    "additionalDirectories": [
+      "/home/wassim/Documents/Etudes/Profil/Portfolio"
+    ]
+  }
+}
