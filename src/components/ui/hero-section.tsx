@@ -40,16 +40,16 @@ export function HeroSection() {
                                     {/* Giant typographic intro — photo remplace le I de WASSIM */}
                                     <div className="flex flex-col items-center w-full mt-10 mb-12 select-none leading-[0.85]" aria-label="Wassim Zitoun">
                                         {/* Row 1: WASS [photo=I] M */}
-                                        <div className="flex items-end justify-center w-full gap-[0.5vw]">
-                                            <span className="font-black text-[20vw] md:text-[min(16vw,_12rem)] tracking-tighter uppercase text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/20">
+                                        <div className="flex items-end justify-center w-full gap-[0.5vw] text-[20vw] md:text-[min(16vw,_12rem)]">
+                                            <span className="font-black tracking-tighter uppercase text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/20">
                                                 WASS
                                             </span>
                                             <img
                                                 src="/assets/WassimPhoto.jpg"
                                                 alt="Wassim Zitoun"
-                                                className="flex-shrink-0 w-[10vw] h-[28vw] md:w-[min(5.2vw,_3.9rem)] md:h-[min(15.3vw,_11.5rem)] object-cover rounded-[40px] md:rounded-[min(3.8vw,_2.85rem)] shadow-2xl border-2 border-white/10 mb-[2vw] md:mb-[min(0.3vw,_0.25rem)]"
+                                                className="flex-shrink-0 w-[0.24em] h-[0.8em] object-cover rounded-[0.11em] shadow-2xl border-2 border-white/10 mb-[0.05em]"
                                             />
-                                            <span className="font-black text-[20vw] md:text-[min(16vw,_12rem)] tracking-tighter uppercase text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/20">
+                                            <span className="font-black tracking-tighter uppercase text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/20">
                                                 M
                                             </span>
                                         </div>
