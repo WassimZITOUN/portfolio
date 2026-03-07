@@ -41,20 +41,20 @@ export function HeroSection() {
                                     <div className="flex flex-col items-center w-full mt-10 mb-12 select-none leading-[0.85]" aria-label="Wassim Zitoun">
                                         {/* Row 1: WASS [photo=I] M */}
                                         <div className="flex items-end justify-center w-full gap-[0.5vw]">
-                                            <span className="font-black text-[20vw] md:text-[16vw] tracking-tighter uppercase text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/20">
+                                            <span className="font-black text-[20vw] md:text-[min(16vw,_12rem)] tracking-tighter uppercase text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/20">
                                                 WASS
                                             </span>
                                             <img
                                                 src="/assets/WassimPhoto.jpg"
                                                 alt="Wassim Zitoun"
-                                                className="flex-shrink-0 w-[10vw] h-[28vw] md:w-[75px] md:h-[220px] object-cover rounded-[40px] md:rounded-[55px] shadow-2xl border-2 border-white/10 mb-[2vw] md:mb-4"
+                                                className="flex-shrink-0 w-[10vw] h-[28vw] md:w-[min(5.2vw,_3.9rem)] md:h-[min(15.3vw,_11.5rem)] object-cover rounded-[40px] md:rounded-[min(3.8vw,_2.85rem)] shadow-2xl border-2 border-white/10 mb-[2vw] md:mb-[min(0.3vw,_0.25rem)]"
                                             />
-                                            <span className="font-black text-[20vw] md:text-[16vw] tracking-tighter uppercase text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/20">
+                                            <span className="font-black text-[20vw] md:text-[min(16vw,_12rem)] tracking-tighter uppercase text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/20">
                                                 M
                                             </span>
                                         </div>
                                         {/* Row 2: ZITOUN. */}
-                                        <div className="font-black text-[20vw] md:text-[16vw] tracking-tighter uppercase text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/20 w-full text-center -mt-[1vw]">
+                                        <div className="font-black text-[20vw] md:text-[min(16vw,_12rem)] tracking-tighter uppercase text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/20 w-full text-center -mt-[1vw]">
                                             ZITOUN.
                                         </div>
                                     </div>
