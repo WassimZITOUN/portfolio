@@ -22,12 +22,12 @@ export function ProjectsSection() {
         <section id="projets" className="relative z-10 py-24 px-6 max-w-7xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-white mb-12">Projets</h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[350px]">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:auto-rows-[350px]">
 
                 {/* Row 1 — Col 1: Kiseki (flagship, 2 columns) */}
                 <GlassCard className="md:col-span-2">
-                    <div className="flex h-full flex-col gap-6 md:flex-row md:items-center">
-                        <div className="flex flex-1 flex-col justify-between gap-4">
+                    <div className="flex h-full flex-col gap-4 md:flex-row md:items-center">
+                        <div className="flex md:flex-1 flex-col justify-between gap-4">
                             <GlassCardHeader>
                                 <div className="flex items-center gap-2 mb-1">
                                     <span className="text-2xl">✦</span>
@@ -51,25 +51,25 @@ export function ProjectsSection() {
                             </GlassCardContent>
                         </div>
 
-                        <div className="relative mx-auto h-[220px] w-full max-w-[360px] md:h-full md:flex-1 md:max-w-none">
+                        <div className="relative h-[200px] w-full md:h-full md:flex-1">
                             {/* Subtle glow behind mockups */}
                             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[60%] rounded-full bg-purple-500/15 blur-3xl" />
 
                             {/* PC mockup — perspective tilt */}
-                            <div className="absolute left-[5%] top-[10%] w-[80%] [perspective:800px]">
+                            <div className="absolute left-[5%] top-[5%] w-[75%] [perspective:800px]">
                                 <Image
                                     src={pcMockup}
                                     alt="Aperçu desktop de l'application Kiseki"
-                                    className="h-auto w-full rounded-lg object-contain [transform:rotateY(-4deg)_rotateX(2deg)] drop-shadow-[0_20px_40px_rgba(139,92,246,0.25)]"
+                                    className="h-auto w-full object-contain [transform:rotateY(-4deg)_rotateX(2deg)] drop-shadow-[0_20px_40px_rgba(139,92,246,0.25)]"
                                 />
                             </div>
 
                             {/* Mobile mockup — overlapping in front */}
-                            <div className="absolute bottom-0 right-[5%] w-[30%] min-w-[80px] md:min-w-[100px] [perspective:800px]">
+                            <div className="absolute bottom-0 right-[5%] w-[28%] min-w-[65px] [perspective:800px]">
                                 <Image
                                     src={mobileMockup}
                                     alt="Aperçu mobile de l'application Kiseki"
-                                    className="h-auto w-full rounded-xl object-contain [transform:rotateY(6deg)_rotateX(1deg)] drop-shadow-[0_20px_40px_rgba(139,92,246,0.3)]"
+                                    className="h-auto w-full object-contain [transform:rotateY(6deg)_rotateX(1deg)] drop-shadow-[0_20px_40px_rgba(139,92,246,0.3)]"
                                 />
                             </div>
                         </div>
