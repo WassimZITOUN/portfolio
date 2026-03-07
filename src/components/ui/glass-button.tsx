@@ -6,7 +6,7 @@ function cn(...inputs: (string | undefined | null | false)[]): string {
 }
 
 const glassButtonVariants = cva(
-  "relative isolate all-unset cursor-pointer rounded-full transition-all",
+  "relative cursor-pointer rounded-full transition-all backdrop-blur-3xl bg-black/20 border border-white/10 text-white/90 hover:bg-white/10 hover:border-white/20 hover:shadow-lg active:scale-95",
   {
     variants: {
       size: {

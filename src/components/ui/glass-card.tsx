@@ -6,7 +6,7 @@ function GlassCard({ className, children, ...props }: React.HTMLAttributes<HTMLD
     return (
         <div
             className={cn(
-                'relative rounded-2xl border bg-white/5 border-white/10 hover:bg-white/10 transition-colors duration-300 p-6',
+                'relative rounded-2xl border bg-black/20 border-white/10 backdrop-blur-3xl hover:bg-white/10 transition-colors duration-300 p-6',
                 className,
             )}
             {...props}>
