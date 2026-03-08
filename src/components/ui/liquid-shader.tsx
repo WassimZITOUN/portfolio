@@ -6,11 +6,17 @@ import * as THREE from 'three'
 export interface InteractiveNebulaShaderProps {
   disableCenterDimming?: boolean
   className?: string
+  /** Dark ambient RGB triplet — default blue: [0.02, 0.08, 0.15] */
+  colorBase?: [number, number, number]
+  /** Bright emission RGB triplet — default blue: [0.3, 0.8, 1.5] */
+  colorMult?: [number, number, number]
 }
 
 export function InteractiveNebulaShader({
   disableCenterDimming = true,
   className = '',
+  colorBase = [0.02, 0.08, 0.15],
+  colorMult = [0.3, 0.8, 1.5],
 }: InteractiveNebulaShaderProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const materialRef = useRef<THREE.ShaderMaterial>(null)
@@ -48,6 +54,8 @@ export function InteractiveNebulaShader({
       uniform float iTime;
       uniform vec2 iMouse;
       uniform bool disableCenterDimming;
+      uniform vec3 iColorBase;
+      uniform vec3 iColorMult;
       varying vec2 vUv;
 
       #define t iTime
@@ -71,7 +79,7 @@ export function InteractiveNebulaShader({
           float rz = map(p);
           float f  = clamp((rz - map(p + 0.1)) * 0.5, -0.1, 1.0);
 
-          vec3 base = vec3(0.02, 0.08, 0.15) + vec3(0.3, 0.8, 1.5) * f;
+          vec3 base = iColorBase + iColorMult * f;
 
           col = col * base + smoothstep(2.5, 0.0, rz) * 0.7 * base;
           d += min(rz, 1.0);
@@ -99,6 +107,8 @@ export function InteractiveNebulaShader({
       iResolution: { value: new THREE.Vector2() },
       iMouse: { value: new THREE.Vector2() },
       disableCenterDimming: { value: disableCenterDimming },
+      iColorBase: { value: new THREE.Vector3(...colorBase) },
+      iColorMult: { value: new THREE.Vector3(...colorMult) },
     }
 
     const material = new THREE.ShaderMaterial({ vertexShader, fragmentShader, uniforms })
