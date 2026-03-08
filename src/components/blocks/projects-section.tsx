@@ -1,3 +1,6 @@
+'use client'
+
+import { useState } from 'react'
 import {
     GlassCard,
     GlassCardHeader,
@@ -5,6 +8,8 @@ import {
     GlassCardDescription,
     GlassCardContent,
 } from '@/components/ui/glass-card'
+import { Sheet, SheetContent } from '@/components/ui/sheet'
+import { KisekiProjectDetails } from '@/components/blocks/kiseki-project-details'
 import Image from 'next/image'
 import pcMockup from '@/app/assets/PCmockup.png'
 import mobileMockup from '@/app/assets/MobileMockup.png'
@@ -22,14 +27,41 @@ function Tag({ children }: { children: React.ReactNode }) {
 }
 
 export function ProjectsSection() {
+    const [kisekiOpen, setKisekiOpen] = useState(false)
+    const [comingSoonOpen, setComingSoonOpen] = useState(false)
+
     return (
+      <>
+        <Sheet open={kisekiOpen} onOpenChange={setKisekiOpen}>
+            <SheetContent
+                side="right"
+                className="w-full sm:max-w-xl bg-[#0a0a0f]/95 backdrop-blur-2xl border-white/10 text-white overflow-y-auto p-8"
+            >
+                <KisekiProjectDetails />
+            </SheetContent>
+        </Sheet>
+        <Sheet open={comingSoonOpen} onOpenChange={setComingSoonOpen}>
+            <SheetContent
+                side="right"
+                className="w-full sm:max-w-sm bg-[#0a0a0f]/95 backdrop-blur-2xl border-white/10 text-white p-8 flex flex-col items-center justify-center text-center gap-4"
+            >
+                <span className="text-4xl">🚧</span>
+                <h3 className="text-xl font-bold tracking-tight text-white">Bientôt disponible</h3>
+                <p className="text-sm text-gray-400">
+                    La fiche détaillée de ce projet est en cours de rédaction.<br />Reviens très vite !
+                </p>
+            </SheetContent>
+        </Sheet>
         <section id="projets" className="relative z-10 py-24 px-6 max-w-7xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-white mb-12">Projets</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:auto-rows-[520px]">
 
                 {/* Row 1 — Kiseki (full width) */}
-                <GlassCard className="md:col-span-2 md:overflow-hidden">
+                <GlassCard
+                    className="md:col-span-2 md:overflow-hidden cursor-pointer transition-transform duration-200 active:scale-[0.98]"
+                    onClick={() => setKisekiOpen(true)}
+                >
                     <div className="flex h-full flex-col md:flex-row md:items-center gap-6">
 
                         {/* Left: text, centré verticalement */}
@@ -84,7 +116,10 @@ export function ProjectsSection() {
                 </GlassCard>
 
                 {/* Row 2 — Left: GestionRDV */}
-                <GlassCard className="md:col-span-1">
+                <GlassCard
+                    className="md:col-span-1 cursor-pointer transition-transform duration-200 active:scale-[0.98]"
+                    onClick={() => setComingSoonOpen(true)}
+                >
                     <div className="flex h-full flex-col justify-between gap-3">
                         <GlassCardHeader>
                             <GlassCardTitle>GestionRDV</GlassCardTitle>
@@ -117,7 +152,10 @@ export function ProjectsSection() {
                 </GlassCard>
 
                 {/* Row 2 — Right: Cabinet Kaabia */}
-                <GlassCard className="md:col-span-1">
+                <GlassCard
+                    className="md:col-span-1 cursor-pointer transition-transform duration-200 active:scale-[0.98]"
+                    onClick={() => setComingSoonOpen(true)}
+                >
                     <div className="flex h-full flex-col justify-between gap-3">
                         <GlassCardHeader>
                             <div className="flex items-center gap-2 mb-1">
@@ -152,7 +190,10 @@ export function ProjectsSection() {
                 </GlassCard>
 
                 {/* Row 3 — AJIR (full width) */}
-                <GlassCard className="md:col-span-2 md:overflow-hidden">
+                <GlassCard
+                    className="md:col-span-2 md:overflow-hidden cursor-pointer transition-transform duration-200 active:scale-[0.98]"
+                    onClick={() => setComingSoonOpen(true)}
+                >
                     <div className="flex h-full flex-col md:flex-row md:items-center gap-6">
 
                         {/* Left: PC + phone composition */}
@@ -208,5 +249,6 @@ export function ProjectsSection() {
 
             </div>
         </section>
+      </>
     )
 }
