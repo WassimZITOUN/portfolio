@@ -185,8 +185,8 @@ const HeroHeader = () => {
 
 const Logo = ({ className }: { className?: string }) => {
     return (
-        <span className={cn('font-black text-xl tracking-tighter uppercase text-transparent bg-clip-text bg-gradient-to-r from-[#9B99FE] to-[#2BC8B7]', className)}>
-            W
+        <span className={cn('font-black text-xl tracking-[-0.08em] uppercase text-transparent bg-clip-text bg-gradient-to-r from-[#9B99FE] to-[#2BC8B7]', className)}>
+            WZ
         </span>
     )
 }
