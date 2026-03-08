@@ -1,4 +1,4 @@
-import { Smartphone, Server, ShieldCheck } from 'lucide-react'
+import { Smartphone, Server, ShieldCheck, BrainCircuit } from 'lucide-react'
 import {
     GlassCard,
     GlassCardHeader,
@@ -26,13 +26,19 @@ const skills = [
         description: 'Modélisation relationnelle et protection des données.',
         body: 'Gestion avancée sur PostgreSQL et MySQL. Sécurisation via Row Level Security (RLS) sur Supabase, authentification RBAC, et implémentation de tokens JWT.',
     },
+    {
+        icon: <BrainCircuit className="w-8 h-8 mb-4 text-amber-400" />,
+        title: 'IA Agentique',
+        description: "Conception et orchestration de systèmes d'agents IA autonomes.",
+        body: "Utilisation du Claude Agent SDK et de l'API Anthropic pour construire des pipelines multi-agents. Maîtrise du tool use, du RAG et du prompt engineering avancé.",
+    },
 ]
 
 export function ExpertiseSection() {
     return (
         <section id="competences" className="relative z-10 py-24 px-6 max-w-7xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-white mb-12">Compétences</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {skills.map((skill) => (
                     <GlassCard key={skill.title}>
                         <GlassCardHeader>

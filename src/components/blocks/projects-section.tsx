@@ -1,3 +1,6 @@
+'use client'
+
+import { useState } from 'react'
 import {
     GlassCard,
     GlassCardHeader,
@@ -5,11 +8,15 @@ import {
     GlassCardDescription,
     GlassCardContent,
 } from '@/components/ui/glass-card'
+import { Sheet, SheetContent } from '@/components/ui/sheet'
+import { KisekiProjectDetails } from '@/components/blocks/kiseki-project-details'
 import Image from 'next/image'
 import pcMockup from '@/app/assets/PCmockup.png'
 import mobileMockup from '@/app/assets/MobileMockup.png'
 import gestionRDVMockup from '@/app/assets/GestionRDVmockup.png'
 import kaabiaMockup from '@/app/assets/KaabiaAvocatMockup.png'
+import ajirPcMockup from '@/app/assets/mockupajirpc.png'
+import ajirMobileMockup from '@/app/assets/mockupajirMobile.png'
 
 function Tag({ children }: { children: React.ReactNode }) {
     return (
@@ -20,16 +27,45 @@ function Tag({ children }: { children: React.ReactNode }) {
 }
 
 export function ProjectsSection() {
+    const [kisekiOpen, setKisekiOpen] = useState(false)
+    const [comingSoonOpen, setComingSoonOpen] = useState(false)
+
     return (
+      <>
+        <Sheet open={kisekiOpen} onOpenChange={setKisekiOpen}>
+            <SheetContent
+                side="right"
+                className="w-full sm:max-w-xl bg-[#0a0a0f]/95 backdrop-blur-2xl border-white/10 text-white overflow-y-auto p-8"
+            >
+                <KisekiProjectDetails />
+            </SheetContent>
+        </Sheet>
+        <Sheet open={comingSoonOpen} onOpenChange={setComingSoonOpen}>
+            <SheetContent
+                side="right"
+                className="w-full sm:max-w-sm bg-[#0a0a0f]/95 backdrop-blur-2xl border-white/10 text-white p-8 flex flex-col items-center justify-center text-center gap-4"
+            >
+                <span className="text-4xl">🚧</span>
+                <h3 className="text-xl font-bold tracking-tight text-white">Bientôt disponible</h3>
+                <p className="text-sm text-gray-400">
+                    La fiche détaillée de ce projet est en cours de rédaction.<br />Reviens très vite !
+                </p>
+            </SheetContent>
+        </Sheet>
         <section id="projets" className="relative z-10 py-24 px-6 max-w-7xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-white mb-12">Projets</h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:auto-rows-[680px]">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:auto-rows-[520px]">
 
                 {/* Row 1 — Kiseki (full width) */}
-                <GlassCard className="md:col-span-2">
-                    <div className="flex h-full flex-col gap-4 md:flex-row md:items-center">
-                        <div className="flex md:flex-1 flex-col justify-between gap-4">
+                <GlassCard
+                    className="md:col-span-2 md:overflow-hidden cursor-pointer transition-transform duration-200 active:scale-[0.98]"
+                    onClick={() => setKisekiOpen(true)}
+                >
+                    <div className="flex h-full flex-col md:flex-row md:items-center gap-6">
+
+                        {/* Left: text, centré verticalement */}
+                        <div className="flex flex-col justify-center gap-5 md:w-[40%] shrink-0">
                             <GlassCardHeader>
                                 <div className="flex items-center gap-2 mb-1">
                                     <span className="text-2xl">✦</span>
@@ -39,8 +75,7 @@ export function ProjectsSection() {
                                     Application sociale de vote quotidien entre amis. Architecture monorepo complexe avec logique métier partagée.
                                 </GlassCardDescription>
                             </GlassCardHeader>
-
-                            <GlassCardContent className="flex flex-col gap-4 pt-2">
+                            <GlassCardContent className="flex flex-col gap-4 pt-0">
                                 <p className="text-white/50 text-xs leading-relaxed">
                                     Mise en place de Edge Functions, CRON jobs et Row Level Security (RLS).
                                 </p>
@@ -53,20 +88,27 @@ export function ProjectsSection() {
                             </GlassCardContent>
                         </div>
 
-                        <div className="relative h-[200px] w-full md:h-full md:flex-1">
-                            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[60%] rounded-full bg-purple-500/15 blur-3xl" />
-                            <div className="absolute left-[5%] top-[5%] w-[75%] [perspective:800px]">
+                        {/* Right: composition croisée PC + phone */}
+                        <div className="relative flex-1 flex items-center justify-center md:block md:h-full">
+                            {/* Glow */}
+                            <div className="absolute left-[20%] top-[30%] w-[50%] h-[50%] rounded-full bg-purple-500/20 blur-3xl pointer-events-none" />
+                            <div className="hidden md:block absolute right-[10%] bottom-[15%] w-[25%] h-[40%] rounded-full bg-violet-400/15 blur-2xl pointer-events-none" />
+
+                            {/* PC mockup — mobile: flux normal centré / desktop: absolu */}
+                            <div className="relative md:absolute md:left-[-5%] md:top-[26%] w-[90%] md:w-[85%] [perspective:1200px]">
                                 <Image
                                     src={pcMockup}
                                     alt="Aperçu desktop de l'application Kiseki"
-                                    className="h-auto w-full object-contain [transform:rotateY(-4deg)_rotateX(2deg)] drop-shadow-[0_20px_40px_rgba(139,92,246,0.25)]"
+                                    className="h-auto w-full object-contain [transform:rotateY(-10deg)_rotateX(4deg)_rotate(-1deg)] drop-shadow-[0_32px_56px_rgba(139,92,246,0.35)]"
                                 />
                             </div>
-                            <div className="absolute bottom-0 right-[5%] w-[28%] min-w-[65px] [perspective:800px]">
+
+                            {/* Phone mockup — desktop only */}
+                            <div className="hidden md:block absolute bottom-[3%] right-[10%] w-[30%] min-w-[70px] z-10 [perspective:1200px]">
                                 <Image
                                     src={mobileMockup}
                                     alt="Aperçu mobile de l'application Kiseki"
-                                    className="h-auto w-full object-contain [transform:rotateY(6deg)_rotateX(1deg)] drop-shadow-[0_20px_40px_rgba(139,92,246,0.3)]"
+                                    className="h-auto w-full object-contain [transform:rotateY(12deg)_rotateX(-3deg)_rotate(2deg)] drop-shadow-[0_32px_56px_rgba(139,92,246,0.4)]"
                                 />
                             </div>
                         </div>
@@ -74,7 +116,10 @@ export function ProjectsSection() {
                 </GlassCard>
 
                 {/* Row 2 — Left: GestionRDV */}
-                <GlassCard className="md:col-span-1">
+                <GlassCard
+                    className="md:col-span-1 cursor-pointer transition-transform duration-200 active:scale-[0.98]"
+                    onClick={() => setComingSoonOpen(true)}
+                >
                     <div className="flex h-full flex-col justify-between gap-3">
                         <GlassCardHeader>
                             <GlassCardTitle>GestionRDV</GlassCardTitle>
@@ -107,7 +152,10 @@ export function ProjectsSection() {
                 </GlassCard>
 
                 {/* Row 2 — Right: Cabinet Kaabia */}
-                <GlassCard className="md:col-span-1">
+                <GlassCard
+                    className="md:col-span-1 cursor-pointer transition-transform duration-200 active:scale-[0.98]"
+                    onClick={() => setComingSoonOpen(true)}
+                >
                     <div className="flex h-full flex-col justify-between gap-3">
                         <GlassCardHeader>
                             <div className="flex items-center gap-2 mb-1">
@@ -142,31 +190,65 @@ export function ProjectsSection() {
                 </GlassCard>
 
                 {/* Row 3 — AJIR (full width) */}
-                <GlassCard className="md:col-span-2 flex flex-col md:flex-row md:items-center md:gap-16">
-                    <GlassCardHeader className="md:w-1/2">
-                        <div className="flex items-center gap-2 mb-1">
-                            <span className="text-lg text-emerald-400">⚡</span>
-                            <GlassCardTitle>AJIR — Intranet Pédagogique</GlassCardTitle>
-                        </div>
-                        <GlassCardDescription>
-                            Application web Offline-First (LAN) développée en 2 jours pour une association éducative.
-                        </GlassCardDescription>
-                    </GlassCardHeader>
+                <GlassCard
+                    className="md:col-span-2 md:overflow-hidden cursor-pointer transition-transform duration-200 active:scale-[0.98]"
+                    onClick={() => setComingSoonOpen(true)}
+                >
+                    <div className="flex h-full flex-col md:flex-row md:items-center gap-6">
 
-                    <GlassCardContent className="md:w-1/2 flex flex-col gap-4">
-                        <p className="text-white/50 text-xs leading-relaxed">
-                            Digitalisation des bilans avec algorithmes de répartition, Drag &amp; Drop fluide, et génération de rapports PDF officiels.
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                            <Tag>React</Tag>
-                            <Tag>Node.js</Tag>
-                            <Tag>Prisma</Tag>
-                            <Tag>Offline-First</Tag>
+                        {/* Left: PC + phone composition */}
+                        <div className="relative flex-1 flex items-center justify-center md:block md:h-full">
+                            {/* Glow */}
+                            <div className="absolute left-[20%] top-[30%] w-[50%] h-[50%] rounded-full bg-emerald-500/20 blur-3xl pointer-events-none" />
+                            <div className="hidden md:block absolute left-[5%] bottom-[15%] w-[25%] h-[40%] rounded-full bg-teal-400/15 blur-2xl pointer-events-none" />
+
+                            {/* PC mockup */}
+                            <div className="relative md:absolute md:left-[2%] md:top-[22%] w-[90%] md:w-[78%] [perspective:1200px]">
+                                <Image
+                                    src={ajirPcMockup}
+                                    alt="Aperçu desktop de l'application AJIR"
+                                    className="h-auto w-full object-contain [transform:rotateY(10deg)_rotateX(4deg)_rotate(1deg)] drop-shadow-[0_32px_56px_rgba(16,185,129,0.35)]"
+                                />
+                            </div>
+
+                            {/* Phone mockup — desktop only */}
+                            <div className="hidden md:block absolute bottom-[20%] right-[4%] w-[28%] min-w-[70px] z-10 [perspective:1200px]">
+                                <Image
+                                    src={ajirMobileMockup}
+                                    alt="Aperçu mobile de l'application AJIR"
+                                    className="h-auto w-full object-contain [transform:rotateY(-12deg)_rotateX(-3deg)_rotate(-2deg)] drop-shadow-[0_32px_56px_rgba(16,185,129,0.4)]"
+                                />
+                            </div>
                         </div>
-                    </GlassCardContent>
+
+                        {/* Right: text */}
+                        <div className="flex flex-col justify-center gap-5 md:w-[38%] shrink-0">
+                            <GlassCardHeader>
+                                <div className="flex items-center gap-2 mb-1">
+                                    <span className="text-lg text-emerald-400">⚡</span>
+                                    <GlassCardTitle>AJIR — Intranet Pédagogique</GlassCardTitle>
+                                </div>
+                                <GlassCardDescription>
+                                    Application web Offline-First (LAN) développée en 2 jours pour une association éducative.
+                                </GlassCardDescription>
+                            </GlassCardHeader>
+                            <GlassCardContent className="flex flex-col gap-4 pt-0">
+                                <p className="text-white/50 text-xs leading-relaxed">
+                                    Digitalisation des bilans avec algorithmes de répartition, Drag &amp; Drop fluide, et génération de rapports PDF officiels.
+                                </p>
+                                <div className="flex flex-wrap gap-2">
+                                    <Tag>React</Tag>
+                                    <Tag>Node.js</Tag>
+                                    <Tag>Prisma</Tag>
+                                    <Tag>Offline-First</Tag>
+                                </div>
+                            </GlassCardContent>
+                        </div>
+                    </div>
                 </GlassCard>
 
             </div>
         </section>
+      </>
     )
 }
