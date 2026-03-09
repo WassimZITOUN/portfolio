@@ -84,7 +84,7 @@ export function ProjectsSection() {
                         {/* Right: composition croisée PC + phone */}
                         <div className="relative flex-1 flex items-center justify-center md:block md:h-full">
                             {/* Glow */}
-                            <div className="absolute left-[20%] top-[30%] w-[50%] h-[50%] rounded-full bg-purple-500/20 blur-3xl pointer-events-none" />
+                            <div className="hidden sm:block absolute left-[20%] top-[30%] w-[50%] h-[50%] rounded-full bg-purple-500/20 blur-3xl pointer-events-none" />
                             <div className="hidden md:block absolute right-[10%] bottom-[15%] w-[25%] h-[40%] rounded-full bg-violet-400/15 blur-2xl pointer-events-none" />
 
                             {/* PC mockup — mobile: flux normal centré / desktop: absolu */}
@@ -122,7 +122,7 @@ export function ProjectsSection() {
                         </GlassCardHeader>
 
                         <div className="relative flex items-center justify-center py-2">
-                            <div className="absolute inset-0 rounded-full bg-blue-500/10 blur-3xl" />
+                            <div className="hidden sm:block absolute inset-0 rounded-full bg-blue-500/10 blur-3xl" />
                             <Image
                                 src={gestionRDVMockup}
                                 alt="Aperçu de GestionRDV"
@@ -161,7 +161,7 @@ export function ProjectsSection() {
                         </GlassCardHeader>
 
                         <div className="relative flex items-center justify-center py-2">
-                            <div className="absolute inset-0 rounded-full bg-cyan-500/10 blur-3xl" />
+                            <div className="hidden sm:block absolute inset-0 rounded-full bg-cyan-500/10 blur-3xl" />
                             <Image
                                 src={kaabiaMockup}
                                 alt="Aperçu du site Cabinet Avocat Kaabia"
@@ -192,7 +192,7 @@ export function ProjectsSection() {
                         {/* Left: PC + phone composition */}
                         <div className="relative flex-1 flex items-center justify-center md:block md:h-full">
                             {/* Glow */}
-                            <div className="absolute left-[20%] top-[30%] w-[50%] h-[50%] rounded-full bg-emerald-500/20 blur-3xl pointer-events-none" />
+                            <div className="hidden sm:block absolute left-[20%] top-[30%] w-[50%] h-[50%] rounded-full bg-emerald-500/20 blur-3xl pointer-events-none" />
                             <div className="hidden md:block absolute left-[5%] bottom-[15%] w-[25%] h-[40%] rounded-full bg-teal-400/15 blur-2xl pointer-events-none" />
 
                             {/* PC mockup */}
