@@ -50,7 +50,7 @@ export function ProjectsSection() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:auto-rows-[520px]">
 
-                {/* Row 1 — Kiseki (full width) */}
+                {/* Row 1 - Kiseki (full width) */}
                 <GlassCard
                     className="md:col-span-2 cursor-pointer transition-transform duration-200 active:scale-[0.98]"
                     onClick={() => router.push('/projets/kiseki')}
@@ -62,7 +62,7 @@ export function ProjectsSection() {
                             <GlassCardHeader>
                                 <div className="flex items-center gap-2 mb-1">
                                     <Sparkles className="w-5 h-5 text-violet-400" />
-                                    <GlassCardTitle className="text-2xl">Kiseki — App Sociale</GlassCardTitle>
+                                    <GlassCardTitle className="text-2xl">Kiseki - App Sociale</GlassCardTitle>
                                 </div>
                                 <GlassCardDescription>
                                     Application sociale de vote quotidien entre amis. Architecture monorepo complexe avec logique métier partagée.
@@ -84,11 +84,11 @@ export function ProjectsSection() {
                         {/* Right: composition croisée PC + phone */}
                         <div className="relative flex-1 flex items-center justify-center md:block md:h-full">
                             {/* Glow */}
-                            <div className="hidden sm:block absolute left-[20%] top-[30%] w-[50%] h-[50%] rounded-full bg-purple-500/20 blur-3xl pointer-events-none" />
+                            <div className="absolute left-[20%] top-[30%] w-[50%] h-[50%] rounded-full bg-purple-500/20 blur-3xl pointer-events-none" />
                             <div className="hidden md:block absolute right-[10%] bottom-[15%] w-[25%] h-[40%] rounded-full bg-violet-400/15 blur-2xl pointer-events-none" />
 
-                            {/* PC mockup — mobile: flux normal centré / desktop: absolu */}
-                            <div className="relative md:absolute md:left-[2%] md:top-[28%] w-[90%] md:w-[70%] [perspective:1200px]">
+                            {/* PC mockup - mobile: flux normal centré / desktop: absolu */}
+                            <div className="relative md:absolute md:left-[2%] md:top-[28%] w-[75%] md:w-[70%] [perspective:1200px]">
                                 <Image
                                     src={pcMockup}
                                     alt="Aperçu desktop de l'application Kiseki"
@@ -96,8 +96,8 @@ export function ProjectsSection() {
                                 />
                             </div>
 
-                            {/* Phone mockup — desktop only */}
-                            <div className="hidden md:block absolute bottom-[4%] right-[6%] w-[26%] min-w-[70px] z-10 [perspective:1200px]">
+                            {/* Phone mockup */}
+                            <div className="absolute bottom-[4%] right-[6%] w-[28%] md:w-[26%] min-w-[60px] z-10 [perspective:1200px]">
                                 <Image
                                     src={mobileMockup}
                                     alt="Aperçu mobile de l'application Kiseki"
@@ -108,7 +108,7 @@ export function ProjectsSection() {
                     </div>
                 </GlassCard>
 
-                {/* Row 2 — Left: GestionRDV */}
+                {/* Row 2 - Left: GestionRDV */}
                 <GlassCard
                     className="md:col-span-1 cursor-pointer transition-transform duration-200 active:scale-[0.98]"
                     onClick={() => setComingSoonOpen(true)}
@@ -144,7 +144,7 @@ export function ProjectsSection() {
                     </div>
                 </GlassCard>
 
-                {/* Row 2 — Right: Cabinet Kaabia */}
+                {/* Row 2 - Right: Cabinet Kaabia */}
                 <GlassCard
                     className="md:col-span-1 cursor-pointer transition-transform duration-200 active:scale-[0.98]"
                     onClick={() => setComingSoonOpen(true)}
@@ -182,7 +182,7 @@ export function ProjectsSection() {
                     </div>
                 </GlassCard>
 
-                {/* Row 3 — AJIR (full width) */}
+                {/* Row 3 - AJIR (full width) */}
                 <GlassCard
                     className="md:col-span-2 cursor-pointer transition-transform duration-200 active:scale-[0.98]"
                     onClick={() => setComingSoonOpen(true)}
@@ -192,11 +192,11 @@ export function ProjectsSection() {
                         {/* Left: PC + phone composition */}
                         <div className="relative flex-1 flex items-center justify-center md:block md:h-full">
                             {/* Glow */}
-                            <div className="hidden sm:block absolute left-[20%] top-[30%] w-[50%] h-[50%] rounded-full bg-emerald-500/20 blur-3xl pointer-events-none" />
+                            <div className="absolute left-[20%] top-[30%] w-[50%] h-[50%] rounded-full bg-emerald-500/20 blur-3xl pointer-events-none" />
                             <div className="hidden md:block absolute left-[5%] bottom-[15%] w-[25%] h-[40%] rounded-full bg-teal-400/15 blur-2xl pointer-events-none" />
 
                             {/* PC mockup */}
-                            <div className="relative md:absolute md:left-[2%] md:top-[25%] w-[90%] md:w-[65%] [perspective:1200px]">
+                            <div className="relative md:absolute md:left-[2%] md:top-[25%] w-[75%] md:w-[65%] [perspective:1200px]">
                                 <Image
                                     src={ajirPcMockup}
                                     alt="Aperçu desktop de l'application AJIR"
@@ -204,8 +204,8 @@ export function ProjectsSection() {
                                 />
                             </div>
 
-                            {/* Phone mockup — desktop only */}
-                            <div className="hidden md:block absolute bottom-[15%] right-[4%] w-[24%] min-w-[70px] z-10 [perspective:1200px]">
+                            {/* Phone mockup */}
+                            <div className="absolute bottom-[15%] right-[4%] w-[28%] md:w-[24%] min-w-[60px] z-10 [perspective:1200px]">
                                 <Image
                                     src={ajirMobileMockup}
                                     alt="Aperçu mobile de l'application AJIR"
@@ -219,7 +219,7 @@ export function ProjectsSection() {
                             <GlassCardHeader>
                                 <div className="flex items-center gap-2 mb-1">
                                     <Zap className="w-5 h-5 text-emerald-400" />
-                                    <GlassCardTitle>AJIR — Intranet Pédagogique</GlassCardTitle>
+                                    <GlassCardTitle>AJIR - Intranet Pédagogique</GlassCardTitle>
                                 </div>
                                 <GlassCardDescription>
                                     Application web Offline-First (LAN) développée en 2 jours pour une association éducative.

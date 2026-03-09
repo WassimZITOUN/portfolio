@@ -6,9 +6,9 @@ import * as THREE from 'three'
 export interface InteractiveNebulaShaderProps {
   disableCenterDimming?: boolean
   className?: string
-  /** Dark ambient RGB triplet — default blue: [0.02, 0.08, 0.15] */
+  /** Dark ambient RGB triplet - default blue: [0.02, 0.08, 0.15] */
   colorBase?: [number, number, number]
-  /** Bright emission RGB triplet — default blue: [0.3, 0.8, 1.5] */
+  /** Bright emission RGB triplet - default blue: [0.3, 0.8, 1.5] */
   colorMult?: [number, number, number]
 }
 
