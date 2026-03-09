@@ -6,9 +6,9 @@ import * as THREE from 'three'
 export interface InteractiveNebulaShaderProps {
   disableCenterDimming?: boolean
   className?: string
-  /** Dark ambient RGB triplet — default blue: [0.02, 0.08, 0.15] */
+  /** Dark ambient RGB triplet - default blue: [0.02, 0.08, 0.15] */
   colorBase?: [number, number, number]
-  /** Bright emission RGB triplet — default blue: [0.3, 0.8, 1.5] */
+  /** Bright emission RGB triplet - default blue: [0.3, 0.8, 1.5] */
   colorMult?: [number, number, number]
 }
 
@@ -32,8 +32,9 @@ export function InteractiveNebulaShader({
     const container = containerRef.current
     if (!container) return
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false })
-    renderer.setPixelRatio(window.devicePixelRatio)
+    const isMobile = window.matchMedia('(pointer: coarse)').matches
+    const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: false })
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1 : 1.5))
     container.appendChild(renderer.domElement)
 
     const scene = new THREE.Scene()
@@ -56,6 +57,7 @@ export function InteractiveNebulaShader({
       uniform bool disableCenterDimming;
       uniform vec3 iColorBase;
       uniform vec3 iColorMult;
+      uniform int iIterations;
       varying vec2 vUv;
 
       #define t iTime
@@ -74,7 +76,8 @@ export function InteractiveNebulaShader({
         vec3 col = vec3(0.0);
         float d = 2.5;
 
-        for (int i = 0; i <= 5; i++) {
+        for (int i = 0; i < 6; i++) {
+          if (i >= iIterations) break;
           vec3 p = vec3(0,0,5.) + normalize(vec3(uv, -1.)) * d;
           float rz = map(p);
           float f  = clamp((rz - map(p + 0.1)) * 0.5, -0.1, 1.0);
@@ -109,6 +112,7 @@ export function InteractiveNebulaShader({
       disableCenterDimming: { value: disableCenterDimming },
       iColorBase: { value: new THREE.Vector3(...colorBase) },
       iColorMult: { value: new THREE.Vector3(...colorMult) },
+      iIterations: { value: isMobile ? 3 : 6 },
     }
 
     const material = new THREE.ShaderMaterial({ vertexShader, fragmentShader, uniforms })

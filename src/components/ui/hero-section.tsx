@@ -2,6 +2,7 @@
 
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Menu, X, Download } from 'lucide-react'
 import { LiquidButton } from '@/components/ui/button'
 import { AnimatedGroup } from '@/components/ui/animated-group'
@@ -37,16 +38,19 @@ export function HeroSection() {
                         <div className="mx-auto max-w-7xl px-6">
                             <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
                                 <AnimatedGroup variants={transitionVariants}>
-                                    {/* Giant typographic intro — photo remplace le I de WASSIM */}
+                                    {/* Giant typographic intro - photo remplace le I de WASSIM */}
                                     <div className="flex flex-col items-center w-full mt-10 mb-12 select-none leading-[0.85]" aria-label="Wassim Zitoun">
                                         {/* Row 1: WASS [photo=I] M */}
                                         <div className="flex items-end justify-center w-full gap-[0.5vw] text-[20vw] md:text-[min(16vw,_12rem)]">
                                             <span className="font-black tracking-tighter uppercase text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/20">
                                                 WASS
                                             </span>
-                                            <img
+                                            <Image
                                                 src="/assets/WassimPhoto.jpg"
                                                 alt="Wassim Zitoun"
+                                                width={200}
+                                                height={667}
+                                                priority
                                                 className="flex-shrink-0 w-[0.24em] h-[0.8em] object-cover rounded-[0.11em] shadow-2xl border-2 border-white/10 mb-[0.05em]"
                                             />
                                             <span className="font-black tracking-tighter uppercase text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/20">
@@ -128,7 +132,10 @@ const HeroHeader = () => {
             <nav
                 data-state={menuState && 'active'}
                 className="fixed z-20 w-full px-2 group">
-                        <div className={cn('mx-auto mt-2 max-w-6xl px-6 transition-all duration-300 lg:px-12', isScrolled && 'bg-background/05 max-w-4xl rounded-2xl border backdrop-blur-lg lg:px-5')}>
+                        <div className={cn(
+                            'mx-auto mt-2 max-w-6xl px-6 duration-300 transition-[max-width,background-color,border-radius,border-color,padding] lg:px-12',
+                            (isScrolled || menuState) && 'bg-background/05 max-w-4xl rounded-2xl border backdrop-blur-lg lg:px-5'
+                        )}>
                     <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
                         <div className="flex w-full justify-between lg:w-auto">
                             <Link

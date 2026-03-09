@@ -42,7 +42,7 @@ import mockupSaisie from '@/app/assets/Kiseki/MockupIphoneTransparent_SaisiDelaq
 import mockupPartage from '@/app/assets/Kiseki/MockupIphoneTransparent_ApercuPartagedimage.png'
 
 /* ------------------------------------------------------------------ */
-/* Metadata is exported from a server wrapper — this file is 'use client' */
+/* Metadata is exported from a server wrapper - this file is 'use client' */
 /* ------------------------------------------------------------------ */
 
 const TECH_STACK = [
@@ -103,8 +103,8 @@ const FEATURES: { icon: LucideIcon; title: string; desc: string; color: string; 
 
 const GAME_STEPS: { time: string; icon: LucideIcon; label: string; sub: string }[] = [
     { time: 'Matin', icon: Sun, label: 'La question du jour est révélée', sub: 'Tout le groupe partage la même question à 9h00.' },
-    { time: 'Journée', icon: ClipboardList, label: 'Chacun vote anonymement', sub: 'Vote depuis l\'app ou directement via le widget Android.' },
-    { time: 'Soir', icon: Moon, label: 'Les résultats sont dévoilés', sub: 'Podium, scores et qui a voté pour qui — tout est révélé.' },
+    { time: 'Journée', icon: ClipboardList, label: 'Chacun vote anonymement', sub: 'Vote depuis l\'app ou bientôt directement via le widget Android.' },
+    { time: 'Soir', icon: Moon, label: 'Les résultats sont dévoilés', sub: 'Podium, scores et qui a voté pour qui tout est révélé.' },
 ]
 
 /* ------------------------------------------------------------------ */
@@ -247,12 +247,12 @@ function KisekiHero() {
                 </motion.div>
             </div>
 
-            {/* Mockups — PC + Mobile */}
+            {/* Mockups - PC + Mobile */}
             <motion.div
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.8, ease: easeOutQuart }}
-                className="relative w-full max-w-3xl mx-auto mt-12 h-[260px] md:h-[380px] hidden sm:block"
+                className="relative w-full max-w-3xl mx-auto mt-12 h-[220px] sm:h-[260px] md:h-[380px]"
             >
                 {/* Glow */}
                 <div className="absolute inset-x-[15%] inset-y-[10%] rounded-full bg-purple-500/25 blur-3xl pointer-events-none" />
@@ -261,7 +261,7 @@ function KisekiHero() {
                 <div className="absolute left-0 top-0 w-[80%] [perspective:1200px]">
                     <Image
                         src={pcMockup}
-                        alt="Kiseki — aperçu desktop"
+                        alt="Kiseki - aperçu desktop"
                         className="h-auto w-full object-contain [transform:rotateY(-10deg)_rotateX(4deg)_rotate(-1deg)] drop-shadow-[0_32px_56px_rgba(139,92,246,0.35)]"
                     />
                 </div>
@@ -270,7 +270,7 @@ function KisekiHero() {
                 <div className="absolute bottom-0 right-[2%] w-[22%] z-10 [perspective:1200px]">
                     <Image
                         src={mobileMockup}
-                        alt="Kiseki — aperçu mobile"
+                        alt="Kiseki - aperçu mobile"
                         className="h-auto w-full object-contain [transform:rotateY(12deg)_rotateX(-3deg)_rotate(2deg)] drop-shadow-[0_32px_56px_rgba(139,92,246,0.4)]"
                     />
                 </div>
@@ -344,31 +344,31 @@ function KisekiConcept() {
                     </div>
                 </div>
 
-                {/* Right: phone composition — vote + résultat */}
+                {/* Right: phone composition - vote + résultat */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.7, delay: 0.3 }}
-                    className="w-full lg:w-[360px] shrink-0 relative h-[420px] hidden sm:block"
+                    className="w-full lg:w-[360px] shrink-0 relative h-[320px] sm:h-[420px]"
                 >
                     {/* Glow */}
                     <div className="absolute inset-[15%] rounded-full bg-violet-500/20 blur-3xl pointer-events-none" />
 
-                    {/* Vote screen — left/front */}
+                    {/* Vote screen - left/front */}
                     <div className="absolute left-0 top-0 w-[58%] z-10 [perspective:1000px]">
                         <Image
                             src={mockupVote}
-                            alt="Kiseki — écran de vote"
+                            alt="Kiseki - écran de vote"
                             className="h-auto w-full object-contain [transform:rotateY(6deg)_rotate(-2deg)] drop-shadow-[0_28px_56px_rgba(139,92,246,0.45)]"
                         />
                     </div>
 
-                    {/* Résultat révélé — right/behind */}
+                    {/* Résultat révélé - right/behind */}
                     <div className="absolute right-0 bottom-0 w-[58%] z-0 [perspective:1000px] opacity-90">
                         <Image
                             src={mockupResultat}
-                            alt="Kiseki — résultat révélé"
+                            alt="Kiseki - résultat révélé"
                             className="h-auto w-full object-contain [transform:rotateY(-8deg)_rotate(3deg)] drop-shadow-[0_24px_48px_rgba(139,92,246,0.35)]"
                         />
                     </div>
@@ -442,7 +442,7 @@ function KisekiFeatures() {
 function KisekiQuestionSystem() {
     const TIMELINE = [
         { time: '09:00', icon: Sun, label: 'Activation', desc: 'pg_cron déclenche activate_daily_slots(). La question du jour est choisie et les membres sont notifiés.', color: 'text-amber-400', bg: 'bg-amber-500/10', border: 'border-amber-500/20' },
-        { time: '09:00–20:00', icon: ClipboardList, label: 'Votes', desc: 'Les membres votent à leur rythme. RLS masque tous les votes des autres — seul le tien est visible.', color: 'text-violet-400', bg: 'bg-violet-500/10', border: 'border-violet-500/20' },
+        { time: '09:00–20:00', icon: ClipboardList, label: 'Votes', desc: 'Les membres votent à leur rythme. RLS masque tous les votes des autres seul le tien est visible.', color: 'text-violet-400', bg: 'bg-violet-500/10', border: 'border-violet-500/20' },
         { time: '19:00', icon: BellRing, label: 'Rappel ciblé', desc: 'Notification envoyée uniquement aux membres n\'ayant pas encore voté. Principe de rareté.', color: 'text-orange-400', bg: 'bg-orange-500/10', border: 'border-orange-500/20' },
         { time: '20:00', icon: Moon, label: 'Révélation', desc: 'reveal_due_questions() bascule le statut. RLS déverrouille : qui a voté pour qui est visible pour tous.', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20' },
     ]
@@ -473,7 +473,7 @@ function KisekiQuestionSystem() {
                 transition={{ delay: 0.2 }}
                 className="text-white/50 text-center max-w-2xl mx-auto mb-16"
             >
-                Chaque question est choisie automatiquement, chaque membre soumet à tour de rôle, et rien n&apos;est répété dans les 30 derniers jours — le tout sans aucune intervention manuelle.
+                Chaque question est choisie automatiquement, chaque membre soumet à tour de rôle, et rien n&apos;est répété dans les 30 derniers jours - le tout sans aucune intervention manuelle.
             </motion.p>
 
             {/* Top row: Round-Robin + Pool */}
@@ -497,15 +497,15 @@ function KisekiQuestionSystem() {
                             </div>
                         </div>
 
-                        <div className="flex gap-4 items-start">
+                        <div className="flex flex-col sm:flex-row gap-4 items-start">
                             {/* Left: text + cycle table */}
                             <div className="flex-1 min-w-0">
                                 <p className="text-white/55 text-sm leading-relaxed mb-4">
-                                    Chaque membre soumet exactement une question par cycle. L&apos;ordre est mélangé via un shuffle Fisher-Yates avec une seed déterministe basée sur <code className="text-violet-300 text-xs bg-violet-500/10 px-1 rounded">md5(group_id || cycle_number)</code> — reproductible si régénéré, aléatoire en apparence.
+                                    Chaque membre soumet exactement une question par cycle. L&apos;ordre est mélangé via un système de tirage au sort qui a l'air totalement aléatoire pour les joueurs, mais qui est en réalité mathématiquement verrouillé par l'application pour garantir un ordre de passage juste et infaillible.
                                 </p>
                                 {/* Visual cycle */}
                                 <div className="rounded-xl border border-white/8 bg-white/3 p-4">
-                                    <p className="text-xs text-white/30 uppercase tracking-widest mb-3">Cycle 1 — Groupe de 4</p>
+                                    <p className="text-xs text-white/30 uppercase tracking-widest mb-3">Cycle 1 - Groupe de 4</p>
                                     <div className="flex flex-col gap-2">
                                         {[
                                             { day: 'Lun', name: 'Charlie', order: 0 },
@@ -531,10 +531,10 @@ function KisekiQuestionSystem() {
                             </div>
 
                             {/* Right: phone mockup */}
-                            <div className="w-[30%] shrink-0 [perspective:800px]">
+                            <div className="w-[50%] mx-auto sm:w-[30%] sm:mx-0 shrink-0 [perspective:800px]">
                                 <Image
                                     src={mockupSaisie}
-                                    alt="Kiseki — saisie de la question"
+                                    alt="Kiseki - saisie de la question"
                                     className="h-auto w-full object-contain [transform:rotateY(-6deg)_rotate(1.5deg)] drop-shadow-[0_16px_32px_rgba(139,92,246,0.4)]"
                                 />
                             </div>
@@ -560,7 +560,7 @@ function KisekiQuestionSystem() {
                             </div>
                         </div>
 
-                        <div className="flex gap-4 items-start">
+                        <div className="flex flex-col sm:flex-row gap-4 items-start">
                             {/* Left: text + pool diagram */}
                             <div className="flex-1 min-w-0">
                                 <p className="text-white/55 text-sm leading-relaxed mb-4">
@@ -599,10 +599,10 @@ function KisekiQuestionSystem() {
                             </div>
 
                             {/* Right: phone mockup */}
-                            <div className="w-[30%] shrink-0 [perspective:800px]">
+                            <div className="w-[50%] mx-auto sm:w-[30%] sm:mx-0 shrink-0 [perspective:800px]">
                                 <Image
                                     src={mockupPartage}
-                                    alt="Kiseki — partage de résultats"
+                                    alt="Kiseki - partage de résultats"
                                     className="h-auto w-full object-contain [transform:rotateY(6deg)_rotate(-1.5deg)] drop-shadow-[0_16px_32px_rgba(59,130,246,0.35)]"
                                 />
                             </div>
@@ -624,7 +624,7 @@ function KisekiQuestionSystem() {
                             <Clock className="w-4 h-4 text-white/50" />
                         </div>
                         <div>
-                            <p className="text-white font-semibold text-sm">Orchestration pg_cron — Schedule fixe 09h / 19h / 20h UTC</p>
+                            <p className="text-white font-semibold text-sm">Orchestration pg_cron - Schedule fixe 09h / 19h / 20h UTC</p>
                             <p className="text-white/40 text-xs">pg_cron + pg_net + Edge Functions Supabase · aucun serveur dédié</p>
                         </div>
                     </div>
@@ -673,29 +673,29 @@ function KisekiMockupShowcase() {
 
             <div className="relative max-w-4xl mx-auto px-6 flex items-end justify-center gap-4 md:gap-8 h-[420px] md:h-[560px]">
 
-                {/* Left — saisie de question */}
+                {/* Left - saisie de question */}
                 <motion.div style={{ y: y1 }} className="w-[28%] shrink-0 mb-8 opacity-85">
                     <Image
                         src={mockupSaisie}
-                        alt="Kiseki — saisie de la question"
+                        alt="Kiseki - saisie de la question"
                         className="h-auto w-full object-contain [transform:rotateY(8deg)_rotate(-2deg)] drop-shadow-[0_32px_64px_rgba(139,92,246,0.35)]"
                     />
                 </motion.div>
 
-                {/* Center — vote (large, front) */}
+                {/* Center - vote (large, front) */}
                 <motion.div style={{ y: y2 }} className="w-[34%] shrink-0 z-10">
                     <Image
                         src={mockupVote}
-                        alt="Kiseki — moment de voter"
+                        alt="Kiseki - moment de voter"
                         className="h-auto w-full object-contain drop-shadow-[0_40px_80px_rgba(139,92,246,0.5)]"
                     />
                 </motion.div>
 
-                {/* Right — détail des votes */}
+                {/* Right - détail des votes */}
                 <motion.div style={{ y: y3 }} className="w-[28%] shrink-0 mb-4 opacity-85">
                     <Image
                         src={mockupDetailVotes}
-                        alt="Kiseki — détail des votes"
+                        alt="Kiseki - détail des votes"
                         className="h-auto w-full object-contain [transform:rotateY(-8deg)_rotate(2deg)] drop-shadow-[0_32px_64px_rgba(139,92,246,0.35)]"
                     />
                 </motion.div>
@@ -789,8 +789,8 @@ function KisekiArchitecture() {
                         {/* apps row */}
                         <div className="grid grid-cols-2 gap-2 mb-3">
                             {[
-                                { label: 'apps/next', sub: 'Web — Next.js 15' },
-                                { label: 'apps/expo', sub: 'Mobile — Expo 54' },
+                                { label: 'apps/next', sub: 'Web - Next.js 15' },
+                                { label: 'apps/expo', sub: 'Mobile - Expo 54' },
                             ].map((a) => (
                                 <div key={a.label} className="rounded-xl border border-violet-400/20 bg-violet-500/10 px-3 py-2.5">
                                     <p className="text-xs font-mono font-semibold text-violet-200">{a.label}</p>

@@ -1,16 +1,24 @@
+'use client'
+
 import { cn } from '@/lib/utils'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { GlowingEffect } from '@/components/ui/glowing-effect'
 
 function GlassCard({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) {
+    const [isTouchDevice, setIsTouchDevice] = useState(true)
+
+    useEffect(() => {
+        setIsTouchDevice(window.matchMedia('(pointer: coarse)').matches)
+    }, [])
+
     return (
         <div
             className={cn(
-                'relative rounded-2xl border bg-black/20 border-white/10 backdrop-blur-3xl hover:bg-white/10 transition-colors duration-300 p-6',
+                'relative rounded-2xl border bg-black/20 border-white/10 backdrop-blur-lg sm:backdrop-blur-3xl hover:bg-white/10 transition-colors duration-300 p-6',
                 className,
             )}
             {...props}>
-            <GlowingEffect spread={40} glow={true} disabled={false} proximity={64} inactiveZone={0.01} />
+            <GlowingEffect spread={40} glow={true} disabled={isTouchDevice} proximity={64} inactiveZone={0.01} />
             {children}
         </div>
     )
