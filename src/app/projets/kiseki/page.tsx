@@ -160,10 +160,12 @@ function KisekiNav() {
 /* Hero section                                                         */
 /* ------------------------------------------------------------------ */
 function KisekiHero() {
+    const easeOutQuart: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94]
+
     const fadeUp = (delay: number) => ({
         initial: { opacity: 0, y: 20, filter: 'blur(12px)' },
         animate: { opacity: 1, y: 0, filter: 'blur(0px)' },
-        transition: { duration: 0.8, delay, ease: [0.25, 0.46, 0.45, 0.94] },
+        transition: { duration: 0.8, delay, ease: easeOutQuart },
     })
 
     return (
@@ -249,7 +251,7 @@ function KisekiHero() {
             <motion.div
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+                transition={{ duration: 1, delay: 0.8, ease: easeOutQuart }}
                 className="relative w-full max-w-3xl mx-auto mt-12 h-[260px] md:h-[380px] hidden sm:block"
             >
                 {/* Glow */}
