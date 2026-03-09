@@ -1,6 +1,8 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { Sparkles, Scale, Zap, Wrench } from 'lucide-react'
 import {
     GlassCard,
     GlassCardHeader,
@@ -9,7 +11,6 @@ import {
     GlassCardContent,
 } from '@/components/ui/glass-card'
 import { Sheet, SheetContent } from '@/components/ui/sheet'
-import { KisekiProjectDetails } from '@/components/blocks/kiseki-project-details'
 import Image from 'next/image'
 import pcMockup from '@/app/assets/PCmockup.png'
 import mobileMockup from '@/app/assets/MobileMockup.png'
@@ -27,25 +28,17 @@ function Tag({ children }: { children: React.ReactNode }) {
 }
 
 export function ProjectsSection() {
-    const [kisekiOpen, setKisekiOpen] = useState(false)
     const [comingSoonOpen, setComingSoonOpen] = useState(false)
+    const router = useRouter()
 
     return (
       <>
-        <Sheet open={kisekiOpen} onOpenChange={setKisekiOpen}>
-            <SheetContent
-                side="right"
-                className="w-full sm:max-w-xl bg-[#0a0a0f]/95 backdrop-blur-2xl border-white/10 text-white overflow-y-auto p-8"
-            >
-                <KisekiProjectDetails />
-            </SheetContent>
-        </Sheet>
         <Sheet open={comingSoonOpen} onOpenChange={setComingSoonOpen}>
             <SheetContent
                 side="right"
                 className="w-full sm:max-w-sm bg-[#0a0a0f]/95 backdrop-blur-2xl border-white/10 text-white p-8 flex flex-col items-center justify-center text-center gap-4"
             >
-                <span className="text-4xl">🚧</span>
+                <Wrench className="w-10 h-10 text-white/40" />
                 <h3 className="text-xl font-bold tracking-tight text-white">Bientôt disponible</h3>
                 <p className="text-sm text-gray-400">
                     La fiche détaillée de ce projet est en cours de rédaction.<br />Reviens très vite !
@@ -59,8 +52,8 @@ export function ProjectsSection() {
 
                 {/* Row 1 — Kiseki (full width) */}
                 <GlassCard
-                    className="md:col-span-2 md:overflow-hidden cursor-pointer transition-transform duration-200 active:scale-[0.98]"
-                    onClick={() => setKisekiOpen(true)}
+                    className="md:col-span-2 cursor-pointer transition-transform duration-200 active:scale-[0.98]"
+                    onClick={() => router.push('/projets/kiseki')}
                 >
                     <div className="flex h-full flex-col md:flex-row md:items-center gap-6">
 
@@ -68,7 +61,7 @@ export function ProjectsSection() {
                         <div className="flex flex-col justify-center gap-5 md:w-[40%] shrink-0">
                             <GlassCardHeader>
                                 <div className="flex items-center gap-2 mb-1">
-                                    <span className="text-2xl">✦</span>
+                                    <Sparkles className="w-5 h-5 text-violet-400" />
                                     <GlassCardTitle className="text-2xl">Kiseki — App Sociale</GlassCardTitle>
                                 </div>
                                 <GlassCardDescription>
@@ -89,7 +82,7 @@ export function ProjectsSection() {
                         </div>
 
                         {/* Right: composition croisée PC + phone */}
-                        <div className="relative flex-1 flex items-center justify-center md:block md:h-full">
+                        <div className="relative flex-1 flex items-center justify-center md:block md:h-full md:overflow-hidden">
                             {/* Glow */}
                             <div className="absolute left-[20%] top-[30%] w-[50%] h-[50%] rounded-full bg-purple-500/20 blur-3xl pointer-events-none" />
                             <div className="hidden md:block absolute right-[10%] bottom-[15%] w-[25%] h-[40%] rounded-full bg-violet-400/15 blur-2xl pointer-events-none" />
@@ -159,7 +152,7 @@ export function ProjectsSection() {
                     <div className="flex h-full flex-col justify-between gap-3">
                         <GlassCardHeader>
                             <div className="flex items-center gap-2 mb-1">
-                                <span className="text-lg text-cyan-400">⚖</span>
+                                <Scale className="w-5 h-5 text-cyan-400" />
                                 <GlassCardTitle>Cabinet Avocat Kaabia</GlassCardTitle>
                             </div>
                             <GlassCardDescription>
@@ -191,13 +184,13 @@ export function ProjectsSection() {
 
                 {/* Row 3 — AJIR (full width) */}
                 <GlassCard
-                    className="md:col-span-2 md:overflow-hidden cursor-pointer transition-transform duration-200 active:scale-[0.98]"
+                    className="md:col-span-2 cursor-pointer transition-transform duration-200 active:scale-[0.98]"
                     onClick={() => setComingSoonOpen(true)}
                 >
                     <div className="flex h-full flex-col md:flex-row md:items-center gap-6">
 
                         {/* Left: PC + phone composition */}
-                        <div className="relative flex-1 flex items-center justify-center md:block md:h-full">
+                        <div className="relative flex-1 flex items-center justify-center md:block md:h-full md:overflow-hidden">
                             {/* Glow */}
                             <div className="absolute left-[20%] top-[30%] w-[50%] h-[50%] rounded-full bg-emerald-500/20 blur-3xl pointer-events-none" />
                             <div className="hidden md:block absolute left-[5%] bottom-[15%] w-[25%] h-[40%] rounded-full bg-teal-400/15 blur-2xl pointer-events-none" />
@@ -225,7 +218,7 @@ export function ProjectsSection() {
                         <div className="flex flex-col justify-center gap-5 md:w-[38%] shrink-0">
                             <GlassCardHeader>
                                 <div className="flex items-center gap-2 mb-1">
-                                    <span className="text-lg text-emerald-400">⚡</span>
+                                    <Zap className="w-5 h-5 text-emerald-400" />
                                     <GlassCardTitle>AJIR — Intranet Pédagogique</GlassCardTitle>
                                 </div>
                                 <GlassCardDescription>
