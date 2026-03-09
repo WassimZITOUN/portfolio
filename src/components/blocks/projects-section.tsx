@@ -82,13 +82,13 @@ export function ProjectsSection() {
                         </div>
 
                         {/* Right: composition croisée PC + phone */}
-                        <div className="relative flex-1 flex items-center justify-center md:block md:h-full md:overflow-hidden">
+                        <div className="relative flex-1 flex items-center justify-center md:block md:h-full">
                             {/* Glow */}
                             <div className="absolute left-[20%] top-[30%] w-[50%] h-[50%] rounded-full bg-purple-500/20 blur-3xl pointer-events-none" />
                             <div className="hidden md:block absolute right-[10%] bottom-[15%] w-[25%] h-[40%] rounded-full bg-violet-400/15 blur-2xl pointer-events-none" />
 
                             {/* PC mockup — mobile: flux normal centré / desktop: absolu */}
-                            <div className="relative md:absolute md:left-[-5%] md:top-[26%] w-[90%] md:w-[85%] [perspective:1200px]">
+                            <div className="relative md:absolute md:left-[2%] md:top-[28%] w-[90%] md:w-[70%] [perspective:1200px]">
                                 <Image
                                     src={pcMockup}
                                     alt="Aperçu desktop de l'application Kiseki"
@@ -97,7 +97,7 @@ export function ProjectsSection() {
                             </div>
 
                             {/* Phone mockup — desktop only */}
-                            <div className="hidden md:block absolute bottom-[3%] right-[10%] w-[30%] min-w-[70px] z-10 [perspective:1200px]">
+                            <div className="hidden md:block absolute bottom-[4%] right-[6%] w-[26%] min-w-[70px] z-10 [perspective:1200px]">
                                 <Image
                                     src={mobileMockup}
                                     alt="Aperçu mobile de l'application Kiseki"
@@ -190,13 +190,13 @@ export function ProjectsSection() {
                     <div className="flex h-full flex-col md:flex-row md:items-center gap-6">
 
                         {/* Left: PC + phone composition */}
-                        <div className="relative flex-1 flex items-center justify-center md:block md:h-full md:overflow-hidden">
+                        <div className="relative flex-1 flex items-center justify-center md:block md:h-full">
                             {/* Glow */}
                             <div className="absolute left-[20%] top-[30%] w-[50%] h-[50%] rounded-full bg-emerald-500/20 blur-3xl pointer-events-none" />
                             <div className="hidden md:block absolute left-[5%] bottom-[15%] w-[25%] h-[40%] rounded-full bg-teal-400/15 blur-2xl pointer-events-none" />
 
                             {/* PC mockup */}
-                            <div className="relative md:absolute md:left-[2%] md:top-[22%] w-[90%] md:w-[78%] [perspective:1200px]">
+                            <div className="relative md:absolute md:left-[2%] md:top-[25%] w-[90%] md:w-[65%] [perspective:1200px]">
                                 <Image
                                     src={ajirPcMockup}
                                     alt="Aperçu desktop de l'application AJIR"
@@ -205,7 +205,7 @@ export function ProjectsSection() {
                             </div>
 
                             {/* Phone mockup — desktop only */}
-                            <div className="hidden md:block absolute bottom-[20%] right-[4%] w-[28%] min-w-[70px] z-10 [perspective:1200px]">
+                            <div className="hidden md:block absolute bottom-[15%] right-[4%] w-[24%] min-w-[70px] z-10 [perspective:1200px]">
                                 <Image
                                     src={ajirMobileMockup}
                                     alt="Aperçu mobile de l'application AJIR"
