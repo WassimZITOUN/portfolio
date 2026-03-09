@@ -5,7 +5,11 @@
       "Bash(npm install three @types/three)",
       "WebFetch(domain:tailark.com)",
       "WebFetch(domain:ibelick.com)",
-      "WebFetch(domain:www.ibelick.com)"
+      "WebFetch(domain:www.ibelick.com)",
+      "Bash(git fetch)",
+      "Bash(git stash)",
+      "Bash(git pull)",
+      "Bash(git stash pop)"
     ],
     "additionalDirectories": [
       "/home/wassim/Documents/Etudes/Profil/Portfolio"

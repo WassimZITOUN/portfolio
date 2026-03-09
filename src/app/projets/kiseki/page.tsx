@@ -441,10 +441,10 @@ function KisekiFeatures() {
 /* ------------------------------------------------------------------ */
 function KisekiQuestionSystem() {
     const TIMELINE = [
-        { time: '09:00', icon: Sun, label: 'Activation', desc: 'pg_cron déclenche activate_daily_slots(). La question du jour est choisie et les membres sont notifiés.', color: 'text-amber-400', bg: 'bg-amber-500/10', border: 'border-amber-500/20' },
-        { time: '09:00–20:00', icon: ClipboardList, label: 'Votes', desc: 'Les membres votent à leur rythme. RLS masque tous les votes des autres seul le tien est visible.', color: 'text-violet-400', bg: 'bg-violet-500/10', border: 'border-violet-500/20' },
-        { time: '19:00', icon: BellRing, label: 'Rappel ciblé', desc: 'Notification envoyée uniquement aux membres n\'ayant pas encore voté. Principe de rareté.', color: 'text-orange-400', bg: 'bg-orange-500/10', border: 'border-orange-500/20' },
-        { time: '20:00', icon: Moon, label: 'Révélation', desc: 'reveal_due_questions() bascule le statut. RLS déverrouille : qui a voté pour qui est visible pour tous.', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20' },
+        { time: 'Matin', icon: Sun, label: 'Activation', desc: 'Une tâche planifiée sélectionne automatiquement la question du jour et notifie les membres.', color: 'text-amber-400', bg: 'bg-amber-500/10', border: 'border-amber-500/20' },
+        { time: 'Journée', icon: ClipboardList, label: 'Votes', desc: 'Les membres votent à leur rythme. Les politiques de sécurité masquent les votes des autres seul le tien est visible.', color: 'text-violet-400', bg: 'bg-violet-500/10', border: 'border-violet-500/20' },
+        { time: 'Fin de journée', icon: BellRing, label: 'Rappel ciblé', desc: 'Notification envoyée uniquement aux membres n\'ayant pas encore voté. Principe de rareté.', color: 'text-orange-400', bg: 'bg-orange-500/10', border: 'border-orange-500/20' },
+        { time: 'Soir', icon: Moon, label: 'Révélation', desc: 'Une fonction serveur bascule le statut. Les résultats sont déverrouillés : qui a voté pour qui devient visible.', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20' },
     ]
 
     return (
@@ -493,7 +493,7 @@ function KisekiQuestionSystem() {
                             </div>
                             <div>
                                 <p className="text-white font-semibold text-sm">Rotation Round-Robin</p>
-                                <p className="text-white/40 text-xs">Fisher-Yates shuffle · seed déterministe</p>
+                                <p className="text-white/40 text-xs">Shuffle déterministe · ordre équitable</p>
                             </div>
                         </div>
 
@@ -526,7 +526,7 @@ function KisekiQuestionSystem() {
                                             </div>
                                         ))}
                                     </div>
-                                    <p className="text-[10px] text-white/25 mt-3">Cap à 12 membres · Verrouillage row-level (FOR UPDATE) pour éviter les doublons en concurrence</p>
+                                    <p className="text-[10px] text-white/25 mt-3">Cap à 12 membres · Verrouillage au niveau ligne pour éviter les doublons en concurrence</p>
                                 </div>
                             </div>
 
@@ -556,7 +556,7 @@ function KisekiQuestionSystem() {
                             </div>
                             <div>
                                 <p className="text-white font-semibold text-sm">Pool Combiné + Anti-doublon</p>
-                                <p className="text-white/40 text-xs">UNION SQL · filtre 30 jours · 30 tags</p>
+                                <p className="text-white/40 text-xs">Fusion de sources · filtre 30 jours · 30 tags</p>
                             </div>
                         </div>
 
@@ -570,30 +570,30 @@ function KisekiQuestionSystem() {
                                 <div className="flex flex-col gap-2">
                                     <div className="grid grid-cols-2 gap-2">
                                         <div className="rounded-lg border border-blue-400/20 bg-blue-500/8 px-3 py-2.5">
-                                            <p className="text-[10px] text-blue-300/70 uppercase tracking-widest mb-1">question_bank</p>
+                                            <p className="text-[10px] text-blue-300/70 uppercase tracking-widest mb-1">Source 1</p>
                                             <p className="text-white text-xs font-semibold">Banque globale</p>
                                             <p className="text-white/35 text-[10px]">Normal · Méchantes · tags</p>
                                         </div>
                                         <div className="rounded-lg border border-violet-400/20 bg-violet-500/8 px-3 py-2.5">
-                                            <p className="text-[10px] text-violet-300/70 uppercase tracking-widest mb-1">user_questions</p>
+                                            <p className="text-[10px] text-violet-300/70 uppercase tracking-widest mb-1">Source 2</p>
                                             <p className="text-white text-xs font-semibold">Questions membres</p>
                                             <p className="text-white/35 text-[10px]">Scoped au groupe</p>
                                         </div>
                                     </div>
                                     <div className="flex items-center justify-center py-1">
                                         <div className="h-px flex-1 bg-white/8" />
-                                        <span className="mx-3 text-[10px] text-white/30 font-mono">UNION + ORDER BY random()</span>
+                                        <span className="mx-3 text-[10px] text-white/30 font-mono">Fusion + sélection aléatoire</span>
                                         <div className="h-px flex-1 bg-white/8" />
                                     </div>
                                     <div className="rounded-lg border border-red-400/15 bg-red-500/5 px-3 py-2.5">
                                         <p className="text-[10px] text-red-300/60 uppercase tracking-widest mb-0.5">Filtre anti-doublon</p>
                                         <p className="text-white/50 text-[11px]">
-                                            <code className="text-red-300/80">NOT IN</code> daily_questions des 30 derniers jours du groupe
+                                            Exclut toutes les questions posées dans les 30 derniers jours du groupe
                                         </p>
                                     </div>
                                     <div className="rounded-lg border border-emerald-400/20 bg-emerald-500/8 px-3 py-2 flex items-center gap-2">
                                         <span className="text-emerald-400 text-xs font-bold">→</span>
-                                        <p className="text-white/60 text-[11px]">1 question sélectionnée · <code className="text-emerald-300/80">LIMIT 1</code></p>
+                                        <p className="text-white/60 text-[11px]">1 question sélectionnée</p>
                                     </div>
                                 </div>
                             </div>
@@ -611,7 +611,7 @@ function KisekiQuestionSystem() {
                 </motion.div>
             </div>
 
-            {/* Timeline pg_cron */}
+            {/* Timeline orchestration */}
             <motion.div
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -624,8 +624,8 @@ function KisekiQuestionSystem() {
                             <Clock className="w-4 h-4 text-white/50" />
                         </div>
                         <div>
-                            <p className="text-white font-semibold text-sm">Orchestration pg_cron - Schedule fixe 09h / 19h / 20h UTC</p>
-                            <p className="text-white/40 text-xs">pg_cron + pg_net + Edge Functions Supabase · aucun serveur dédié</p>
+                            <p className="text-white font-semibold text-sm">Orchestration automatisée Horaires programmés</p>
+                            <p className="text-white/40 text-xs">Tâches planifiées + Edge Functions Supabase · aucun serveur dédié</p>
                         </div>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
