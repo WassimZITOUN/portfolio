@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { Sparkles, Scale, Zap, Wrench } from 'lucide-react'
 import {
     GlassCard,
@@ -10,7 +11,6 @@ import {
     GlassCardContent,
 } from '@/components/ui/glass-card'
 import { Sheet, SheetContent } from '@/components/ui/sheet'
-import Link from 'next/link'
 import Image from 'next/image'
 import pcMockup from '@/app/assets/PCmockup.png'
 import mobileMockup from '@/app/assets/MobileMockup.png'
@@ -29,6 +29,7 @@ function Tag({ children }: { children: React.ReactNode }) {
 
 export function ProjectsSection() {
     const [comingSoonOpen, setComingSoonOpen] = useState(false)
+    const router = useRouter()
 
     return (
       <>
@@ -50,9 +51,9 @@ export function ProjectsSection() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:auto-rows-[520px]">
 
                 {/* Row 1 — Kiseki (full width) */}
-                <Link href="/projets/kiseki" className="block md:col-span-2">
                 <GlassCard
-                    className="h-full md:overflow-hidden cursor-pointer transition-transform duration-200 active:scale-[0.98]"
+                    className="md:col-span-2 cursor-pointer transition-transform duration-200 active:scale-[0.98]"
+                    onClick={() => router.push('/projets/kiseki')}
                 >
                     <div className="flex h-full flex-col md:flex-row md:items-center gap-6">
 
@@ -81,7 +82,7 @@ export function ProjectsSection() {
                         </div>
 
                         {/* Right: composition croisée PC + phone */}
-                        <div className="relative flex-1 flex items-center justify-center md:block md:h-full">
+                        <div className="relative flex-1 flex items-center justify-center md:block md:h-full md:overflow-hidden">
                             {/* Glow */}
                             <div className="absolute left-[20%] top-[30%] w-[50%] h-[50%] rounded-full bg-purple-500/20 blur-3xl pointer-events-none" />
                             <div className="hidden md:block absolute right-[10%] bottom-[15%] w-[25%] h-[40%] rounded-full bg-violet-400/15 blur-2xl pointer-events-none" />
@@ -106,7 +107,6 @@ export function ProjectsSection() {
                         </div>
                     </div>
                 </GlassCard>
-                </Link>
 
                 {/* Row 2 — Left: GestionRDV */}
                 <GlassCard
@@ -184,13 +184,13 @@ export function ProjectsSection() {
 
                 {/* Row 3 — AJIR (full width) */}
                 <GlassCard
-                    className="md:col-span-2 md:overflow-hidden cursor-pointer transition-transform duration-200 active:scale-[0.98]"
+                    className="md:col-span-2 cursor-pointer transition-transform duration-200 active:scale-[0.98]"
                     onClick={() => setComingSoonOpen(true)}
                 >
                     <div className="flex h-full flex-col md:flex-row md:items-center gap-6">
 
                         {/* Left: PC + phone composition */}
-                        <div className="relative flex-1 flex items-center justify-center md:block md:h-full">
+                        <div className="relative flex-1 flex items-center justify-center md:block md:h-full md:overflow-hidden">
                             {/* Glow */}
                             <div className="absolute left-[20%] top-[30%] w-[50%] h-[50%] rounded-full bg-emerald-500/20 blur-3xl pointer-events-none" />
                             <div className="hidden md:block absolute left-[5%] bottom-[15%] w-[25%] h-[40%] rounded-full bg-teal-400/15 blur-2xl pointer-events-none" />
