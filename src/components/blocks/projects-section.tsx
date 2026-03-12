@@ -147,7 +147,7 @@ export function ProjectsSection() {
                 {/* Row 2 - Right: Cabinet Kaabia */}
                 <GlassCard
                     className="md:col-span-1 cursor-pointer transition-transform duration-200 active:scale-[0.98]"
-                    onClick={() => setComingSoonOpen(true)}
+                    onClick={() => router.push('/projets/kaabia')}
                 >
                     <div className="flex h-full flex-col justify-between gap-3">
                         <GlassCardHeader>
