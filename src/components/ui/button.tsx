@@ -113,7 +113,7 @@ function LiquidButton({
         className="absolute top-0 left-0 isolate -z-10 h-full w-full overflow-hidden rounded-md"
         style={{ backdropFilter: 'url("#container-glass")' }}
       />
-      <div className="pointer-events-none z-10">
+      <div className="pointer-events-none z-10 flex items-center gap-2">
         {children}
       </div>
       <GlassFilter />
